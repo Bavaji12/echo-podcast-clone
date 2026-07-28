@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Podcast | Listen to the World's Best Stories</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" class="scroll-progress"></div>
+
+    <!-- Header & Navigation -->
+    <header class="header-section fixed-top">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                    <div class="brand-icon-wrapper">
+                        <i class="bi bi-soundwave"></i>
+                    </div>
+                    <span class="brand-text fw-bold">Echo<span class="text-accent">.</span></span>
+                </a>
+                
+                <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto align-items-lg-center">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#episodes">Episodes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#categories">Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#hosts">Hosts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#reviews">Reviews</a>
+                        </li>
+                    </ul>
+                    
+                    <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                        <button class="btn btn-icon-only search-toggle-btn" id="searchToggle" aria-label="Search Podcasts">
+                            <i class="bi bi-search"></i>
+                        </button>
+                        <button class="btn btn-icon-only theme-toggle-btn" id="themeToggle" aria-label="Toggle Dark Mode">
+                            <i class="bi bi-moon-stars-fill"></i>
+                        </button>
+                        <a href="#episodes" class="btn btn-primary-custom rounded-pill px-4">Listen Now</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Search Modal / Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="container">
+            <div class="search-overlay-content">
+                <button class="btn search-close-btn" id="searchClose" aria-label="Close Search"><i class="bi bi-x-lg"></i></button>
+                <div class="search-input-wrapper">
+                    <i class="bi bi-search"></i>
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search podcasts, episodes, or hosts...">
+                </div>
+                <div class="search-results mt-4" id="searchResults">
+                    <!-- Dynamic search results populated via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero-section d-flex align-items-center">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6">
+                        <div class="hero-content">
+                            <div class="badge-pill mb-3">
+                                <span class="badge-dot"></span> Featured Podcast of the Week
+                            </div>
+                            <h1 class="display-4 fw-extrabold mb-4">Unlocking the Future of <span class="text-gradient">Technology & Design</span></h1>
+                            <p class="lead text-muted mb-4">Dive deep into insightful conversations with industry pioneers, creative directors, and visionaries shaping tomorrow's digital landscape.</p>
+                            <div class="hero-buttons d-flex flex-wrap gap-3 align-items-center">
+                                <a href="#episodes" class="btn btn-primary-custom btn-lg rounded-pill px-5 shadow-sm">
+                                    <i class="bi bi-play-fill me-2"></i> Play Latest Episode
+                                </a>
+                                <a href="#categories" class="btn btn-outline-custom btn-lg rounded-pill px-4">
+                                    Explore Categories
+                                </a>
+                            </div>
+                            <div class="hero-stats d-flex align-items-center gap-4 mt-5 pt-3 border-top">
+                                <div>
+                                    <h3 class="fw-bold mb-0">150K+</h3>
+                                    <p class="text-muted small mb-0">Monthly Listeners</p>
+                                </div>
+                                <div class="stat-divider"></div>
+                                <div>
+                                    <h3 class="fw-bold mb-0">4.9/5</h3>
+                                    <p class="text-muted small mb-0">Average Rating</p>
+                                </div>
+                                <div class="stat-divider"></div>
+                                <div>
+                                    <h3 class="fw-bold mb-0">120+</h3>
+                                    <p class="text-muted small mb-0">Episodes Released</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="hero-image-wrapper position-relative text-center">
+                            <div class="hero-blob">
+                            <img src="assests/images/hero-host.jpg" alt="Podcast Host Recording in Studio" class="img-fluid rounded-4 shadow-lg hero-main-img position-relative z-1"></div>
+                        <div class="floating-card podcast-player-card p-3 rounded-4 shadow bg-glass position-absolute z-2">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="player-thumb rounded-3 overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=200&auto=format&fit=crop" alt="Episode Thumbnail" width="50" height="50" class="object-fit-cover">
+                                    </div>
+                                    <div class="text-start flex-grow-1">
+                                        <span class="badge bg-primary-subtle text-primary small mb-1">Ep. 42</span>
+                                        <h6 class="mb-0 text-dark fw-bold text-truncate" style="max-width: 180px;">The AI Revolution in UI</h6>
+                                        <small class="text-muted">24 min left</small>
+                                    </div>
+                                    <button class="btn btn-sm btn-primary rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;" aria-label="Play/Pause">
+                                        <i class="bi bi-play-fill fs-5"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Episodes Section -->
+        <section id="episodes" class="episodes-section py-section">
+            <div class="container">
+                <div class="section-header text-center mb-5">
+                    <span class="subtitle-badge">Recent Broadcasts</span>
+                    <h2 class="fw-bold display-6 mt-2">Latest Episodes</h2>
+                    <p class="text-muted mx-auto" style="max-width: 600px;">Catch up on our most recent discussions with industry leaders and innovative minds.</p>
+                </div>
+                
+                <div class="row g-4">
+                    <!-- Episode Card 1 -->
+                    <div class="col-lg-4 col-md-6">
+                        <article class="card episode-card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                            <div class="card-img-wrapper position-relative">
+                                <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=600&auto=format&fit=crop" class="card-img-top object-fit-cover" alt="Episode 45 Cover" style="height: 220px;" loading="lazy">
+                                <span class="badge bg-dark text-white position-absolute bottom-0 end-0 m-3 px-3 py-2 rounded-pill small">45 min</span>
+                                <button class="btn fav-btn position-absolute top-0 end-0 m-3 rounded-circle shadow-sm" aria-label="Favorite episode"><i class="bi bi-heart"></i></button>
+                            </div>
+                            <div class="card-body p-4 d-flex flex-column">
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <span class="badge bg-primary-subtle text-primary">Technology</span>
+                                    <span class="text-muted small">• Oct 12, 2026</span>
+                                </div>
+                                <h3 class="h5 fw-bold card-title mb-3"><a href="#" class="text-decoration-none text-dark">Designing for the Next Billion Users with Sarah Jenkins</a></h3>
+                                <p class="text-muted small mb-4 flex-grow-1">Exploring accessibility, offline-first architectures, and design systems built for emerging markets.</p>
+                                <div class="d-flex align-items-center justify-content-between pt-3 border-top mt-auto">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop" alt="Sarah Jenkins" width="32" height="32" class="rounded-circle object-fit-cover">
+                                        <span class="small fw-semibold">Sarah Jenkins</span>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-primary rounded-pill px-3 play-episode-btn">
+                                        <i class="bi bi-play-fill me-1"></i> Listen
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Episode Card 2 -->
+                    <div class="col-lg-4 col-md-6">
+                        <article class="card episode-card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                            <div class="card-img-wrapper position-relative">
+                                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600&auto=format&fit=crop" class="card-img-top object-fit-cover" alt="Episode 44 Cover" style="height: 220px;" loading="lazy">
+                                <span class="badge bg-dark text-white position-absolute bottom-0 end-0 m-3 px-3 py-2 rounded-pill small">38 min</span>
+                                <button class="btn fav-btn position-absolute top-0 end-0 m-3 rounded-circle shadow-sm" aria-label="Favorite episode"><i class="bi bi-heart"></i></button>
+                            </div>
+                            <div class="card-body p-4 d-flex flex-column">
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <span class="badge bg-success-subtle text-success">Business</span>
+                                    <span class="text-muted small">• Oct 05, 2026</span>
+                                </div>
+                                <h3 class="h5 fw-bold card-title mb-3"><a href="#" class="text-decoration-none text-dark">Scaling Remote Engineering Teams Without Burning Out</a></h3>
+                                <p class="text-muted small mb-4 flex-grow-1">Leadership tactics, asynchronous communication, and cultural frameworks for distributed startup growth.</p>
+                                <div class="d-flex align-items-center justify-content-between pt-3 border-top mt-auto">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop" alt="David Chen" width="32" height="32" class="rounded-circle object-fit-cover">
+                                        <span class="small fw-semibold">David Chen</span>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-primary rounded-pill px-3 play-episode-btn">
+                                        <i class="bi bi-play-fill me-1"></i> Listen
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Episode Card 3 -->
+                    <div class="col-lg-4 col-md-6">
+                        <article class="card episode-card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                            <div class="card-img-wrapper position-relative">
+                                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=600&auto=format&fit=crop" class="card-img-top object-fit-cover" alt="Episode 43 Cover" style="height: 220px;" loading="lazy">
+                                <span class="badge bg-dark text-white position-absolute bottom-0 end-0 m-3 px-3 py-2 rounded-pill small">52 min</span>
+                                <button class="btn fav-btn position-absolute top-0 end-0 m-3 rounded-circle shadow-sm" aria-label="Favorite episode"><i class="bi bi-heart"></i></button>
+                            </div>
+                            <div class="card-body p-4 d-flex flex-column">
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <span class="badge bg-warning-subtle text-warning">AI & Future</span>
+                                    <span class="text-muted small">• Sep 28, 2026</span>
+                                </div>
+                                <h3 class="h5 fw-bold card-title mb-3"><a href="#" class="text-decoration-none text-dark">The Ethics of Autonomous Systems and Generative Models</a></h3>
+                                <p class="text-muted small mb-4 flex-grow-1">A deep dive into guardrails, algorithmic bias, and the societal impact of artificial intelligence integration.</p>
+                                <div class="d-flex align-items-center justify-content-between pt-3 border-top mt-auto">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=100&auto=format&fit=crop" alt="Dr. Elena Rostova" width="32" height="32" class="rounded-circle object-fit-cover">
+                                        <span class="small fw-semibold">Dr. Elena Rostova</span>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-primary rounded-pill px-3 play-episode-btn">
+                                        <i class="bi bi-play-fill me-1"></i> Listen
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="text-center mt-5">
+                    <button class="btn btn-outline-custom rounded-pill px-5 py-3 fw-semibold">Load More Episodes</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section id="categories" class="categories-section py-section bg-light-subtle">
+            <div class="container">
+                <div class="section-header text-center mb-5">
+                    <span class="subtitle-badge">Explore Topics</span>
+                    <h2 class="fw-bold display-6 mt-2">Browse by Category</h2>
+                    <p class="text-muted mx-auto" style="max-width: 600px;">Find conversations tailored to your exact professional and personal interests.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <a href="#" class="category-card card border-0 shadow-sm rounded-4 p-4 text-center text-decoration-none h-100">
+                            <div class="category-icon mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center bg-primary-subtle text-primary fs-3">
+                                <i class="bi bi-cpu"></i>
+                            </div>
+                            <h3 class="h5 fw-bold text-dark mb-1">Technology</h3>
+                            <p class="text-muted small mb-0">34 Episodes</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <a href="#" class="category-card card border-0 shadow-sm rounded-4 p-4 text-center text-decoration-none h-100">
+                            <div class="category-icon mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center bg-success-subtle text-success fs-3">
+                                <i class="bi bi-graph-up-arrow"></i>
+                            </div>
+                            <h3 class="h5 fw-bold text-dark mb-1">Business & Startup</h3>
+                            <p class="text-muted small mb-0">28 Episodes</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <a href="#" class="category-card card border-0 shadow-sm rounded-4 p-4 text-center text-decoration-none h-100">
+                            <div class="category-icon mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center bg-warning-subtle text-warning fs-3">
+                                <i class="bi bi-palette"></i>
+                            </div>
+                            <h3 class="h5 fw-bold text-dark mb-1">Design & UX</h3>
+                            <p class="text-muted small mb-0">22 Episodes</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <a href="#" class="category-card card border-0 shadow-sm rounded-4 p-4 text-center text-decoration-none h-100">
+                            <div class="category-icon mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center bg-info-subtle text-info fs-3">
+                                <i class="bi bi-lightbulb"></i>
+                            </div>
+                            <h3 class="h5 fw-bold text-dark mb-1">Mindset & Growth</h3>
+                            <p class="text-muted small mb-0">19 Episodes</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hosts Section -->
+        <section id="hosts" class="hosts-section py-section">
+            <div class="container">
+                <div class="section-header text-center mb-5">
+                    <span class="subtitle-badge">Meet The Voices</span>
+                    <h2 class="fw-bold display-6 mt-2">Your Podcast Hosts</h2>
+                    <p class="text-muted mx-auto" style="max-width: 600px;">Passionate interviewers bringing you the world's most compelling stories.</p>
+                </div>
+
+                <div class="row g-4 justify-content-center">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card host-card border-0 shadow-sm rounded-4 overflow-hidden text-center p-4">
+                            <div class="host-img-wrapper mx-auto mb-4 rounded-circle overflow-hidden shadow" style="width: 140px; height: 140px;">
+                                <img src="assests/images/WhatsApp Image 2026-07-28 at 7.23.00 PM.jpeg" alt="Sarah Jenkins" class="w-100 h-100 object-fit-cover">
+                            </div>
+                            <h3 class="h4 fw-bold mb-1">Shaik Bavaji</h3>
+                            <p class="text-primary small fw-semibold mb-3">Lead Tech Host & Co-Founder</p>
+                            <p class="text-muted small mb-4">Professional Youtuber & Crypto Currency Merchant, passionate about human-centered technology.</p>
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="#" class="btn btn-sm btn-light rounded-circle shadow-sm" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                                <a href="#" class="btn btn-sm btn-light rounded-circle shadow-sm" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="btn btn-sm btn-light rounded-circle shadow-sm" aria-label="Website"><i class="bi bi-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card host-card border-0 shadow-sm rounded-4 overflow-hidden text-center p-4">
+                            <div class="host-img-wrapper mx-auto mb-4 rounded-circle overflow-hidden shadow" style="width: 140px; height: 140px;">
+                                <img src="assests/images/download.jfif" alt="David Chen" class="w-100 h-100 object-fit-cover">
+                            </div>
+                            <h3 class="h4 fw-bold mb-1">Anirudh Ravichander</h3>
+                            <p class="text-primary small fw-semibold mb-3">Business & Startup Host & Professional Singer</p>
+                            <p class="text-muted small mb-4">Venture capitalist, angel investor, and perpetual student of organizational psychology.</p>
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="#" class="btn btn-sm btn-light rounded-circle shadow-sm" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                                <a href="#" class="btn btn-sm btn-light rounded-circle shadow-sm" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="btn btn-sm btn-light rounded-circle shadow-sm" aria-label="Website"><i class="bi bi-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews / Testimonials Section -->
+        <section id="reviews" class="reviews-section py-section bg-light-subtle">
+            <div class="container">
+                <div class="section-header text-center mb-5">
+                    <span class="subtitle-badge">Listener Feedback</span>
+                    <h2 class="fw-bold display-6 mt-2">Loved by Thousands</h2>
+                    <p class="text-muted mx-auto" style="max-width: 600px;">See what our community has to say about their daily dose of Echo Podcast.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="card review-card border-0 shadow-sm rounded-4 p-4 h-100 d-flex flex-column">
+                            <div class="text-warning mb-3">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="text-muted flex-grow-1 mb-4">"Echo Podcast has completely transformed my morning commute. The depth of knowledge and quality of guests is unmatched in the industry."</p>
+                            <div class="d-flex align-items-center gap-3 pt-3 border-top">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&auto=format&fit=crop" alt="Jessica Taylor" width="45" height="45" class="rounded-circle object-fit-cover">
+                                <div>
+                                    <h6 class="fw-bold mb-0">Jessica Taylor</h6>
+                                    <small class="text-muted">Product Designer</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card review-card border-0 shadow-sm rounded-4 p-4 h-100 d-flex flex-column">
+                            <div class="text-warning mb-3">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="text-muted flex-grow-1 mb-4">"The episode on scaling remote engineering teams gave us actionable insights that we implemented immediately at our startup with incredible results."</p>
+                            <div class="d-flex align-items-center gap-3 pt-3 border-top">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=100&auto=format&fit=crop" alt="Marcus Vance" width="45" height="45" class="rounded-circle object-fit-cover">
+                                <div>
+                                    <h6 class="fw-bold mb-0">Marcus Vance</h6>
+                                    <small class="text-muted">CTO & Co-Founder</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card review-card border-0 shadow-sm rounded-4 p-4 h-100 d-flex flex-column">
+                            <div class="text-warning mb-3">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="text-muted flex-grow-1 mb-4">"Engaging hosts, crystal clear audio quality, and profound discussions. Echo is hands down my favorite podcast subscription."</p>
+                            <div class="d-flex align-items-center gap-3 pt-3 border-top">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&auto=format&fit=crop" alt="Sophia Martinez" width="45" height="45" class="rounded-circle object-fit-cover">
+                                <div>
+                                    <h6 class="fw-bold mb-0">Sophia Martinez</h6>
+                                    <small class="text-muted">Software Engineer</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter / CTA Section -->
+        <section class="cta-section py-section">
+            <div class="container">
+                <div class="cta-card rounded-4 p-5 position-relative overflow-hidden text-center text-lg-start">
+                    <div class="row align-items-center">
+                        <div class="col-lg-7 mb-4 mb-lg-0">
+                            <span class="badge bg-white text-primary mb-3 px-3 py-2 rounded-pill fw-semibold">Never Miss an Episode</span>
+                            <h2 class="display-6 fw-bold text-white mb-3">Get the latest podcast updates straight to your inbox.</h2>
+                            <p class="text-white-50 mb-0">Join over 45,000 subscribers and receive curated episode summaries and exclusive interviews.</p>
+                        </div>
+                        <div class="col-lg-5">
+                            <form class="newsletter-form d-flex flex-column flex-sm-row gap-2">
+                                <input type="email" class="form-control form-control-lg rounded-pill px-4" placeholder="Enter your email address" required aria-label="Email address">
+                                <button type="submit" class="btn btn-light btn-lg rounded-pill px-4 fw-semibold text-primary flex-shrink-0">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-section bg-dark text-white pt-5 pb-4">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-brand d-flex align-items-center gap-2 mb-3">
+                        <div class="brand-icon-wrapper bg-primary text-white rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                            <i class="bi bi-soundwave"></i>
+                        </div>
+                        <span class="brand-text fw-bold fs-4 text-white">Echo<span class="text-accent">.</span></span>
+                    </div>
+                    <p class="text-white-50 small mb-4">Unlocking the future of technology, design, and business through deep conversations with visionary leaders.</p>
+                    <div class="social-links d-flex gap-3">
+                        <a href="#" class="social-icon rounded-circle d-flex align-items-center justify-content-center" aria-label="Spotify"><i class="bi bi-spotify"></i></a>
+                        <a href="#" class="social-icon rounded-circle d-flex align-items-center justify-content-center" aria-label="Apple Podcasts"><i class="bi bi-apple"></i></a>
+                        <a href="#" class="social-icon rounded-circle d-flex align-items-center justify-content-center" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="social-icon rounded-circle d-flex align-items-center justify-content-center" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-6">
+                    <h5 class="fw-bold mb-3 fs-6 text-uppercase tracking-wider">Navigation</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="#home" class="text-white-50 text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="#episodes" class="text-white-50 text-decoration-none">Episodes</a></li>
+                        <li class="mb-2"><a href="#categories" class="text-white-50 text-decoration-none">Categories</a></li>
+                        <li class="mb-2"><a href="#hosts" class="text-white-50 text-decoration-none">Hosts</a></li>
+                        <li class="mb-2"><a href="#reviews" class="text-white-50 text-decoration-none">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 col-6">
+                    <h5 class="fw-bold mb-3 fs-6 text-uppercase tracking-wider">Categories</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Technology</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Business</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Design & UX</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Mindset</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">AI & Future</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold mb-3 fs-6 text-uppercase tracking-wider">Listen On</h5>
+                    <p class="text-white-50 small mb-3">Available on all major podcast platforms and streaming apps.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-pill px-3 py-2 d-flex align-items-center gap-2">
+                            <i class="bi bi-spotify"></i> Spotify
+                        </a>
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-pill px-3 py-2 d-flex align-items-center gap-2">
+                            <i class="bi bi-apple"></i> Apple Podcasts
+                        </a>
+                        <a href="#" class="btn btn-outline-light btn-sm rounded-pill px-3 py-2 d-flex align-items-center gap-2">
+                            <i class="bi bi-google"></i> Google Podcasts
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-4 border-top border-secondary text-center text-md-start">
+                <div class="col-md-6 text-white-50 small mb-3 mb-md-0">
+                    &copy; 2026 Echo Podcast. All rights reserved.
+                </div>
+                <div class="col-md-6 text-md-end text-white-50 small">
+                    <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="btn btn-primary rounded-circle shadow-lg back-to-top-btn" aria-label="Back to Top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
